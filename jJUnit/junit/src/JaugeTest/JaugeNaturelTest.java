@@ -12,7 +12,6 @@ public class JaugeNaturelTest {
 	JaugeNaturel jaugeVert;
 	JaugeNaturel jaugeBleu;
 
-
 	@Before
 	public void setUp() throws Exception {
 		jaugeRouge = new JaugeNaturel(0, 50, 50);
@@ -93,56 +92,8 @@ public class JaugeNaturelTest {
 	
 	@Test
 	public void testInferieurIntervalle() {
-		JaugeNaturel jaugeInf = new JaugeNaturel(0, 50, -1);
-
-		assertTrue("ma jauge est bleu", jaugeInf.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeInf.estVert());
-		assertFalse("ma jauge n'est pas rouge", jaugeInf.estRouge());
-		jaugeBleu.incrementer();
-		assertTrue("ma jauge est bleu", jaugeInf.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeInf.estVert());
-		assertFalse("ma jauge n'est pas rouge", jaugeInf.estRouge());
 		
 	}
-	@Test
-	public void testLimiteVigieMaxInferieurVigieMin() {
-		JaugeNaturel jaugeVigie = new JaugeNaturel(100, 0, 50);
-
-		assertTrue("ma jauge est bleu", jaugeVigie.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeVigie.estVert());
-		assertTrue("ma jauge est rouge", jaugeVigie.estRouge());
-		
-	}
-	
-	@Test
-	public void testMaxEgaleMin() {
-		JaugeNaturel jaugeEgaleMin = new JaugeNaturel(50, 50, 51);
-
-		assertFalse("ma jauge n'est pas bleu", jaugeEgaleMin.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeEgaleMin.estVert());
-		assertTrue("ma jauge est rouge", jaugeEgaleMin.estRouge());
-		
-		jaugeEgaleMin.decrementer();
-		assertTrue("ma jauge est bleu", jaugeEgaleMin.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeEgaleMin.estVert());
-		assertTrue("ma jauge est rouge", jaugeEgaleMin.estRouge());
-
-	}
-	
-	@Test
-	public void testSuperieurIntervalle() {
-		JaugeNaturel jaugeSup = new JaugeNaturel(0, 50, 51);
-
-		assertFalse("ma jauge n'est pas bleu", jaugeSup.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeSup.estVert());
-		assertTrue("ma jauge est rouge", jaugeSup.estRouge());
-		jaugeSup.decrementer();
-		assertFalse("ma jauge n'est pas bleu", jaugeSup.estBleu());
-		assertFalse("ma jauge n'est pas vert", jaugeSup.estVert());
-		assertTrue("ma jauge est rouge", jaugeSup.estRouge());
-		
-	}
-	
 	
 	
 }
