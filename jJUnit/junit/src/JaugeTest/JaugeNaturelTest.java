@@ -25,12 +25,14 @@ public class JaugeNaturelTest {
 		jaugeVert = null;
 		jaugeBleu = null;
 	}
+	
+	//BLBL
 
 	@Test
 	public void testJaugeNaturel() {
-		assertNotNull("ma jauge est bien créée", jaugeRouge);
-		assertNotNull("ma jauge est bien créée", jaugeVert);
-		assertNotNull("ma jauge est bien créée", jaugeBleu);
+		assertNotNull("ma jauge est bien crï¿½ï¿½e", jaugeRouge);
+		assertNotNull("ma jauge est bien crï¿½ï¿½e", jaugeVert);
+		assertNotNull("ma jauge est bien crï¿½ï¿½e", jaugeBleu);
 	}
 
 	@Test
