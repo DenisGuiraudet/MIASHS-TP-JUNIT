@@ -1,0 +1,2 @@
+INDEX VERSION 1.130+D:\Users\guira\eclipse-workspace\jJUnit\.metadata\.plugins\org.eclipse.jdt.core
+3841185164.index
