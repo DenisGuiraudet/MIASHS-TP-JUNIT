@@ -7,10 +7,22 @@ package etatPassager;
  * Les instances de cette classe sont des objets constants.
  **/
 public class EtatPassager {
+	
+	static Etat superEtat;
+	
+	public static void main(String[] args) {
+		EtatPassager superPassager = new EtatPassager(superEtat);
+
+		System.out.println(superPassager.toString());
+		System.out.println(superEtat.ASSIS);
+		
+		
+	}
+	
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS, 
+  public enum Etat{/** passager assis à l'intérieur */  ASSIS, 
                     /** passager debout à l'intérieur */ DEBOUT,  
                     /** passager à l'extérieur */        DEHORS};
 
@@ -36,7 +48,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec DEHORS;
    */
   public boolean estExterieur() {
-    return false;
+	return monEtat == Etat.DEHORS;
   }
 
   /**
@@ -45,7 +57,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return monEtat != Etat.ASSIS;
+    return monEtat == Etat.ASSIS;
   }
 
   /**
@@ -54,7 +66,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return false;
+	return monEtat == Etat.DEBOUT;
   }
 
   /**
@@ -63,7 +75,10 @@ public class EtatPassager {
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return false;
+	if ((monEtat == Etat.ASSIS) ||(monEtat == Etat.DEBOUT)) {
+		return true;
+	}
+	return false;
   }
 
 
