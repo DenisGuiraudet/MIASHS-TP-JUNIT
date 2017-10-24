@@ -8,17 +8,6 @@ package etatPassager;
  **/
 public class EtatPassager {
 	
-	static Etat superEtat;
-	
-	public static void main(String[] args) {
-		EtatPassager superPassager = new EtatPassager(superEtat);
-
-		System.out.println(superPassager.toString());
-		System.out.println(superEtat.ASSIS);
-		
-		
-	}
-	
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
@@ -48,7 +37,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec DEHORS;
    */
   public boolean estExterieur() {
-	return monEtat == Etat.DEHORS;
+	    return Etat.DEHORS.toString() == "DEHORS";
   }
 
   /**
@@ -57,7 +46,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return monEtat == Etat.ASSIS;
+    return Etat.ASSIS.toString() == "ASSIS";
   }
 
   /**
@@ -66,7 +55,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-	return monEtat == Etat.DEBOUT;
+	    return Etat.DEBOUT.toString() == "DEBOUT";
   }
 
   /**
@@ -75,7 +64,7 @@ public class EtatPassager {
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-	if ((monEtat == Etat.ASSIS) ||(monEtat == Etat.DEBOUT)) {
+	if ((Etat.ASSIS.toString() == "ASSIS") || (Etat.DEBOUT.toString() == "DEBOUT")) {
 		return true;
 	}
 	return false;
