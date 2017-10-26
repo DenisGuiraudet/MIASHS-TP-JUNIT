@@ -47,6 +47,18 @@ public class EtatPassagerMonter {
   public boolean estDebout() {
 	  return monEtat == Etat.DEBOUT;
   }
+  
+  /**
+   * Le passager est-il a l'intérieur du transport ?
+  *
+  * @return vrai si instanciation avec ASSIS ou DEBOUT.
+  */
+ public boolean estInterieur() {
+	if (estAssis() || estDebout()) {
+		return true;
+	}
+	return false;
+ }
 
 
 
