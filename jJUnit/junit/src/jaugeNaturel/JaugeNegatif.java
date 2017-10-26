@@ -18,10 +18,10 @@ package jaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeReel {
-  private float valeur;
-  private final float min;
-  private final float max;
+public class JaugeNegatif {
+  private long valeur;
+  private final long min;
+  private final long max;
 
   /**
    * Construit une instance en précisant la valeur de départ de la Jauge
@@ -31,10 +31,10 @@ public class JaugeReel {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeReel(float vigieMin, float vigieMax, float depart) {
-    valeur = depart/1000;
-    min = vigieMin/1000;
-    max = vigieMax/1000;
+  public JaugeNegatif(long vigieMin, long vigieMax, long depart) {
+    valeur = -depart;
+    min = -vigieMin;
+    max = -vigieMax;
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
@@ -76,7 +76,7 @@ public class JaugeReel {
    * L'état peut devenir supérieur à vigieMax.
    */
   public void incrementer() {
-    valeur+=1/1000;
+    valeur++;
   }
 
   /**
@@ -84,7 +84,7 @@ public class JaugeReel {
    * L'état peut devenir inférieur à la vigieMin.
    */
   public void decrementer() {
-	    valeur-=1/1000;
+	  valeur--;
   }
 
 

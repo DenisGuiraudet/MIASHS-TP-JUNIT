@@ -18,10 +18,9 @@ package jaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeReel {
-  private float valeur;
-  private final float min;
-  private final float max;
+public class JaugeDistance {
+  private long distanceMin;
+  private long distanceMax;
 
   /**
    * Construit une instance en précisant la valeur de départ de la Jauge
@@ -31,10 +30,9 @@ public class JaugeReel {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeReel(float vigieMin, float vigieMax, float depart) {
-    valeur = depart/1000;
-    min = vigieMin/1000;
-    max = vigieMax/1000;
+  public JaugeDistance(long vigieMin, long vigieMax, long depart) {
+	distanceMin = depart - vigieMin;
+	distanceMax = depart - vigieMax;
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
@@ -48,7 +46,7 @@ public class JaugeReel {
    *
    */
   public boolean estRouge() {
-    return valeur >= max;
+    return distanceMax >= 0;
   }
 
   /**
@@ -59,7 +57,7 @@ public class JaugeReel {
    */
   public boolean estVert() {
     //return !(estBleu() && estRouge());
-    return valeur > min && valeur < max;
+    return distanceMin > 0 && distanceMax < 0;
   }
 
   /**
@@ -68,7 +66,7 @@ public class JaugeReel {
    * @return vrai si niveau <= vigieMin.
    */
   public boolean estBleu() {
-    return valeur <= min;
+    return distanceMin <= 0;
   }
 
   /**
@@ -76,7 +74,8 @@ public class JaugeReel {
    * L'état peut devenir supérieur à vigieMax.
    */
   public void incrementer() {
-    valeur+=1/1000;
+	  distanceMin++;
+	  distanceMax++;
   }
 
   /**
@@ -84,7 +83,8 @@ public class JaugeReel {
    * L'état peut devenir inférieur à la vigieMin.
    */
   public void decrementer() {
-	    valeur-=1/1000;
+	  distanceMin--;
+	  distanceMax--;
   }
 
 
@@ -103,6 +103,6 @@ public class JaugeReel {
    */
   @Override
   public String toString() {
-    return "<" + valeur + " [" + min + "," + max + "]>";
+    return "<[" + distanceMin + "," + distanceMax + "]>";
   }
 }
