@@ -6,17 +6,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JaugeNaturelTest {
+public class JaugeDistanceTest {
 
-	JaugeNaturel jaugeRouge;
-	JaugeNaturel jaugeVert;
-	JaugeNaturel jaugeBleu;
+	JaugeDistance jaugeRouge;
+	JaugeDistance jaugeVert;
+	JaugeDistance jaugeBleu;
 
 	@Before
 	public void setUp() throws Exception {
-		jaugeRouge = new JaugeNaturel(0, 50, 50);
-		jaugeVert = new JaugeNaturel(0, 50, 25);
-		jaugeBleu = new JaugeNaturel(0, 50, 0);
+		jaugeRouge = new JaugeDistance(0, 50, 50);
+		jaugeVert = new JaugeDistance(0, 50, 25);
+		jaugeBleu = new JaugeDistance(0, 50, 0);
 	}
 
 	@After
@@ -61,7 +61,7 @@ public class JaugeNaturelTest {
 	
 	@Test
 	public void testDansIntervalle() {
-		JaugeNaturel jaugeBis = new JaugeNaturel(-345, 67899, 100);
+		JaugeDistance jaugeBis = new JaugeDistance(-345, 67899, 100);
 		assertFalse("ma jauge n'est pas bleu", jaugeBis.estBleu());
 		assertTrue("ma jauge est vert", jaugeBis.estVert());
 		assertFalse("ma jauge n'est pas rouge", jaugeBis.estRouge());
@@ -69,7 +69,7 @@ public class JaugeNaturelTest {
 	
 	@Test
 	public void testDeplacement() {
-		JaugeNaturel jaugeBis = new JaugeNaturel(0, 2, 1);
+		JaugeDistance jaugeBis = new JaugeDistance(0, 2, 1);
 		assertFalse("ma jauge n'est pas bleu", jaugeBis.estBleu());
 		assertTrue("ma jauge est vert", jaugeBis.estVert());
 		assertFalse("ma jauge n'est pas rouge", jaugeBis.estRouge());
@@ -86,6 +86,4 @@ public class JaugeNaturelTest {
 		assertFalse("ma jauge n'est pas vert", jaugeBis.estVert());
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
-	
-	
 }

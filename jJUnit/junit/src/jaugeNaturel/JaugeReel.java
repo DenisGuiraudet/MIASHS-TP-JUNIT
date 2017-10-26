@@ -76,7 +76,7 @@ public class JaugeReel {
    * L'état peut devenir supérieur à vigieMax.
    */
   public void incrementer() {
-    valeur+=1/1000;
+    valeur++;
   }
 
   /**
@@ -84,7 +84,7 @@ public class JaugeReel {
    * L'état peut devenir inférieur à la vigieMin.
    */
   public void decrementer() {
-	    valeur-=1/1000;
+	    valeur--;
   }
 
 

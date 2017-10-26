@@ -48,7 +48,7 @@ public class JaugeNegatif {
    *
    */
   public boolean estRouge() {
-    return valeur >= max;
+    return valeur <= max;
   }
 
   /**
@@ -59,7 +59,7 @@ public class JaugeNegatif {
    */
   public boolean estVert() {
     //return !(estBleu() && estRouge());
-    return valeur > min && valeur < max;
+    return valeur < min && valeur > max;
   }
 
   /**
@@ -68,7 +68,7 @@ public class JaugeNegatif {
    * @return vrai si niveau <= vigieMin.
    */
   public boolean estBleu() {
-    return valeur <= min;
+    return valeur >= min;
   }
 
   /**
@@ -76,7 +76,7 @@ public class JaugeNegatif {
    * L'état peut devenir supérieur à vigieMax.
    */
   public void incrementer() {
-    valeur++;
+    valeur--;
   }
 
   /**
@@ -84,7 +84,7 @@ public class JaugeNegatif {
    * L'état peut devenir inférieur à la vigieMin.
    */
   public void decrementer() {
-	  valeur--;
+	  valeur++;
   }
 
 
