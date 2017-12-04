@@ -31,7 +31,8 @@ public class JaugeNaturel {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeNaturel(long vigieMin, long vigieMax, long depart) {
+  public JaugeNaturel(long vigieMin, long vigieMax, long depart) throws IllegalArgumentException {  
+	if (vigieMin >= vigieMax) throw new IllegalArgumentException();
     valeur = depart;
     min = vigieMin;
     max = vigieMax;

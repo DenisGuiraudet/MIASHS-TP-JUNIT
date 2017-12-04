@@ -31,8 +31,9 @@ public class JaugeReel {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeReel(float vigieMin, float vigieMax, float depart) {
-    valeur = depart/1000;
+  public JaugeReel(float vigieMin, float vigieMax, float depart) throws IllegalArgumentException {  
+    if (vigieMin >= vigieMax) throw new IllegalArgumentException();
+	valeur = depart/1000;
     min = vigieMin/1000;
     max = vigieMax/1000;
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.

@@ -86,5 +86,27 @@ public class JaugeReelTest {
 		assertFalse("ma jauge n'est pas vert", jaugeBis.estVert());
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
+	
+	@Test
+	public void testCreationNonValide() {
+		JaugeReel inverse;
+		try {
+			inverse = new JaugeReel(78, 13, 0);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
+		}
+		JaugeReel egale;
+		try {
+			egale = new JaugeReel(-45, -45, -45);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
+		}
+	}
+	
+	@Test
+	public void testExceptionControlee() throws ClassNotFoundException {
+		//throw new NullPointerException("Attention");
+		throw new ClassNotFoundException();
+	}
 
 }

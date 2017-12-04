@@ -87,5 +87,28 @@ public class JaugeNaturelTest {
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
 	
+
+	@Test
+	public void testCreationNonValide() {
+		JaugeNaturel inverse;
+		try {
+			inverse = new JaugeNaturel(78, 13, 0);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
+		}
+		JaugeNaturel egale;
+		try {
+			egale = new JaugeNaturel(-45, -45, -45);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
+		}
+	}
+	
+	@Test
+	public void testExceptionControlee() throws ClassNotFoundException {
+		//throw new NullPointerException("Attention");
+		throw new ClassNotFoundException();
+	}
+	
 	
 }
