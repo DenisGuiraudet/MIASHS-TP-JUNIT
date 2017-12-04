@@ -86,4 +86,21 @@ public class JaugeDistanceTest {
 		assertFalse("ma jauge n'est pas vert", jaugeBis.estVert());
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
+	
+	@Test
+	public void testCreationNonValide ( ) {
+		JaugeDistance inverse;
+		try {
+			inverse = new JaugeDistance( 78 , 13 , 0 ) ;
+			assertFalse("Echec",true);
+		}catch(Exception e){
+			
+		}
+		JaugeDistance egale;
+		try {
+			egale = new JaugeDistance( 78 , 13 , 0 ) ;
+			assertFalse("Echec",true);
+		}catch(Exception e){
+		}
+	}
 }

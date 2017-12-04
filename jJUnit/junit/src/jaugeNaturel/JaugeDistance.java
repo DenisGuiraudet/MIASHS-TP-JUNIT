@@ -30,9 +30,15 @@ public class JaugeDistance {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeDistance(long vigieMin, long vigieMax, long depart) {
-	distanceMin = depart - vigieMin;
-	distanceMax = depart - vigieMax;
+  public JaugeDistance(long vigieMin, long vigieMax, long depart) throws IllegalArgumentException {
+	  if(vigieMin >= vigieMax) {
+	    	throw new IllegalArgumentException();
+      }
+	  else {
+		  distanceMin = depart - vigieMin;
+		  distanceMax = depart - vigieMax;
+	  }
+	 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
