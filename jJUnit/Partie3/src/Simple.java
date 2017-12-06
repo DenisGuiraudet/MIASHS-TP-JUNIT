@@ -29,7 +29,7 @@ class Simple {
   static private void deboguerEtat (Transport t, Usager p) {
     System.out.println(p);
     System.out.println(t);
-    //Ceci est un commentaire
+    //Ceci est un commentaire hihi
   }
 
   static public void main (String[] args) throws UsagerInvalideException {
