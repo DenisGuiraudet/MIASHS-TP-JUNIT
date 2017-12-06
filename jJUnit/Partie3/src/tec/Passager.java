@@ -22,6 +22,9 @@ package tec;
  * Quand il arrive à son arrét de destination, un passager sort du bus.
  */
 interface Passager {
+	
+	
+	
   /**
    * fournit le nom de l'usager.
    */
