@@ -1,9 +1,19 @@
 package tec;
 
-public class PassagerStandard implements Passager, Transport {
+import util.EtatPassager;
 
-	public PassagerStandard() {
-		// TODO Auto-generated constructor stub
+public class PassagerStandard implements Passager, Transport {
+	
+	private EtatPassager etatPassager;
+	private String nom;
+	private int dest;
+
+	public PassagerStandard(String nom, int dest) {
+
+		etatPassager = new EtatPassager(EtatPassager.Etat.ASSIS);
+		this.nom = nom;
+		this.dest = dest;
+		
 	}
 
 	@Override
