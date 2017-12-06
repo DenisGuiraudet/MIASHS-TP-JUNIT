@@ -1,4 +1,4 @@
-package jaugeNaturel;
+package partie1.jaugeNaturel;
 
 import static org.junit.Assert.*;
 
@@ -6,17 +6,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JaugeDistanceTest {
+public class JaugeNaturelTest {
 
-	JaugeDistance jaugeRouge;
-	JaugeDistance jaugeVert;
-	JaugeDistance jaugeBleu;
+	JaugeNaturel jaugeRouge;
+	JaugeNaturel jaugeVert;
+	JaugeNaturel jaugeBleu;
 
 	@Before
 	public void setUp() throws Exception {
-		jaugeRouge = new JaugeDistance(0, 50, 50);
-		jaugeVert = new JaugeDistance(0, 50, 25);
-		jaugeBleu = new JaugeDistance(0, 50, 0);
+		jaugeRouge = new JaugeNaturel(0, 50, 50);
+		jaugeVert = new JaugeNaturel(0, 50, 25);
+		jaugeBleu = new JaugeNaturel(0, 50, 0);
 	}
 
 	@After
@@ -61,7 +61,7 @@ public class JaugeDistanceTest {
 	
 	@Test
 	public void testDansIntervalle() {
-		JaugeDistance jaugeBis = new JaugeDistance(-345, 67899, 100);
+		JaugeNaturel jaugeBis = new JaugeNaturel(-345, 67899, 100);
 		assertFalse("ma jauge n'est pas bleu", jaugeBis.estBleu());
 		assertTrue("ma jauge est vert", jaugeBis.estVert());
 		assertFalse("ma jauge n'est pas rouge", jaugeBis.estRouge());
@@ -69,7 +69,7 @@ public class JaugeDistanceTest {
 	
 	@Test
 	public void testDeplacement() {
-		JaugeDistance jaugeBis = new JaugeDistance(0, 2, 1);
+		JaugeNaturel jaugeBis = new JaugeNaturel(0, 2, 1);
 		assertFalse("ma jauge n'est pas bleu", jaugeBis.estBleu());
 		assertTrue("ma jauge est vert", jaugeBis.estVert());
 		assertFalse("ma jauge n'est pas rouge", jaugeBis.estRouge());
@@ -87,20 +87,28 @@ public class JaugeDistanceTest {
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
 	
+
 	@Test
-	public void testCreationNonValide ( ) {
-		JaugeDistance inverse;
+	public void testCreationNonValide() {
+		JaugeNaturel inverse;
 		try {
-			inverse = new JaugeDistance( 78 , 13 , 0 ) ;
-			assertFalse("Echec",true);
-		}catch(Exception e){
-			
+			inverse = new JaugeNaturel(78, 13, 0);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
 		}
-		JaugeDistance egale;
+		JaugeNaturel egale;
 		try {
-			egale = new JaugeDistance( 78 , 13 , 0 ) ;
-			assertFalse("Echec",true);
-		}catch(Exception e){
+			egale = new JaugeNaturel(-45, -45, -45);
+			assertFalse("Echec", true);
+		} catch (IllegalArgumentException e) {
 		}
 	}
+	
+	@Test
+	public void testExceptionControlee() throws ClassNotFoundException {
+		//throw new NullPointerException("Attention");
+		throw new ClassNotFoundException();
+	}
+	
+	
 }

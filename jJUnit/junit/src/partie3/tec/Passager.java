@@ -1,4 +1,4 @@
-package tec;
+package partie3.tec;
 
 
 /**

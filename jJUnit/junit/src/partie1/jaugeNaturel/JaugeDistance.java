@@ -1,4 +1,4 @@
-package jaugeNaturel;
+package partie1.jaugeNaturel;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
@@ -18,10 +18,9 @@ package jaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNaturel {
-  private long valeur;
-  private final long min;
-  private final long max;
+public class JaugeDistance {
+  private long distanceMin;
+  private long distanceMax;
 
   /**
    * Construit une instance en précisant la valeur de départ de la Jauge
@@ -31,11 +30,15 @@ public class JaugeNaturel {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeNaturel(long vigieMin, long vigieMax, long depart) throws IllegalArgumentException {  
-	if (vigieMin >= vigieMax) throw new IllegalArgumentException();
-    valeur = depart;
-    min = vigieMin;
-    max = vigieMax;
+  public JaugeDistance(long vigieMin, long vigieMax, long depart) throws IllegalArgumentException {
+	  if(vigieMin >= vigieMax) {
+	    	throw new IllegalArgumentException();
+      }
+	  else {
+		  distanceMin = depart - vigieMin;
+		  distanceMax = depart - vigieMax;
+	  }
+	 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
@@ -49,7 +52,7 @@ public class JaugeNaturel {
    *
    */
   public boolean estRouge() {
-    return valeur >= max;
+    return distanceMax >= 0;
   }
 
   /**
@@ -60,7 +63,7 @@ public class JaugeNaturel {
    */
   public boolean estVert() {
     //return !(estBleu() && estRouge());
-    return valeur > min && valeur < max;
+    return distanceMin > 0 && distanceMax < 0;
   }
 
   /**
@@ -69,7 +72,7 @@ public class JaugeNaturel {
    * @return vrai si niveau <= vigieMin.
    */
   public boolean estBleu() {
-    return valeur <= min;
+    return distanceMin <= 0;
   }
 
   /**
@@ -77,7 +80,8 @@ public class JaugeNaturel {
    * L'état peut devenir supérieur à vigieMax.
    */
   public void incrementer() {
-    valeur++;
+	  distanceMin++;
+	  distanceMax++;
   }
 
   /**
@@ -85,7 +89,8 @@ public class JaugeNaturel {
    * L'état peut devenir inférieur à la vigieMin.
    */
   public void decrementer() {
-	  valeur--;
+	  distanceMin--;
+	  distanceMax--;
   }
 
 
@@ -104,6 +109,6 @@ public class JaugeNaturel {
    */
   @Override
   public String toString() {
-    return "<" + valeur + " [" + min + "," + max + "]>";
+    return "<[" + distanceMin + "," + distanceMax + "]>";
   }
 }

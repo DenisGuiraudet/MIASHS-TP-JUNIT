@@ -1,4 +1,4 @@
-package tec;
+package partie3.tec;
 
 /** 
  * Cette exception est levée pour indiquer qu'un usager n'a pas pu être pris en compte

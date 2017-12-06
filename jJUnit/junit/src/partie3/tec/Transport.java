@@ -1,4 +1,4 @@
-package tec;
+package partie3.tec;
 
 /**
  * Cette interface définit le type manipule par le programme principal.

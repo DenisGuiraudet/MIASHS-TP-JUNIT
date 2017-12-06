@@ -1,4 +1,4 @@
-package jaugeNaturel;
+package partie1.jaugeNaturel;
 
 import static org.junit.Assert.*;
 

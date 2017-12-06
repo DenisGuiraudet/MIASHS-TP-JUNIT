@@ -1,4 +1,4 @@
-package etatPassager;
+package partie1.etatPassager;
 
 import static org.junit.Assert.*;
 

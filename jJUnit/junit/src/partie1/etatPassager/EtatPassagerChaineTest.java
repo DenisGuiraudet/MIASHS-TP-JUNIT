@@ -1,14 +1,14 @@
-package etatPassager;
+package partie1.etatPassager;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class EtatPassagerTest {
+public class EtatPassagerChaineTest {
 
 	@Test
-	public void testAssis() {
-		EtatPassager etatDePassage = new EtatPassager(EtatPassager.Etat.ASSIS);
+	public void testAssis() { // TODO
+		EtatPassagerChaine etatDePassage = new EtatPassagerChaine("ASSIS");
 		assertFalse("Etat non exterieur", etatDePassage.estExterieur());
 		assertTrue("Etat assis", etatDePassage.estAssis());
 		assertFalse("Etat non debout", etatDePassage.estDebout());
@@ -16,7 +16,7 @@ public class EtatPassagerTest {
 
 	@Test
 	public void testDebout() {
-		EtatPassager etatDePassage = new EtatPassager(EtatPassager.Etat.DEBOUT);
+		EtatPassagerChaine etatDePassage = new EtatPassagerChaine("DEBOUT");
 		assertFalse("Etat non exterieur", etatDePassage.estExterieur());
 		assertFalse("Etat non assis", etatDePassage.estAssis());
 		assertTrue("Etat debout", etatDePassage.estDebout());
@@ -24,7 +24,7 @@ public class EtatPassagerTest {
 	
 	@Test
 	public void testExterieur() {
-		EtatPassager etatDePassage = new EtatPassager(EtatPassager.Etat.DEHORS);
+		EtatPassagerChaine etatDePassage = new EtatPassagerChaine("DEHORS");
 		assertTrue("Etat exterieur", etatDePassage.estExterieur());
 		assertFalse("Etat non assis", etatDePassage.estAssis());
 		assertFalse("Etat non debout", etatDePassage.estDebout());
@@ -33,11 +33,11 @@ public class EtatPassagerTest {
 
 	@Test
 	public void testInterieur() {
-		EtatPassager etatDePassage = new EtatPassager(EtatPassager.Etat.ASSIS);
+		EtatPassagerChaine etatDePassage = new EtatPassagerChaine("ASSIS");
 		assertTrue("Etat interieur", etatDePassage.estInterieur());
-		etatDePassage = new EtatPassager(EtatPassager.Etat.DEBOUT);
+		etatDePassage = new EtatPassagerChaine("DEBOUT");
 		assertTrue("Etat interieur", etatDePassage.estInterieur());
-		etatDePassage = new EtatPassager(EtatPassager.Etat.DEHORS);
+		etatDePassage = new EtatPassagerChaine("DEHORS");
 		assertFalse("Etat non interieur", etatDePassage.estInterieur());
 	}
 

@@ -1,4 +1,4 @@
-package jaugeNaturel;
+package partie1.jaugeNaturel;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.

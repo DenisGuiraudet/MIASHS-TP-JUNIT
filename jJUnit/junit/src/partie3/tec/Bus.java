@@ -1,4 +1,4 @@
-package tec;
+package partie3.tec;
 
 /**
  * Cette interface définit un des types abstraits fixant les interactions

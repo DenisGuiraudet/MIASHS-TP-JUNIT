@@ -1,4 +1,4 @@
-package etatPassager;
+package partie1.etatPassager;
 /**
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
@@ -6,20 +6,22 @@ package etatPassager;
  *  
  * Les instances de cette classe sont des objets constants.
  **/
-public class EtatPassagerChaine {
+public class EtatPassagerMonter {
 	
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
+  public enum Etat{/** passager assis à l'intérieur */  ASSIS, 
+                    /** passager debout à l'intérieur */ DEBOUT};
 
-  private final String monEtat;
+  private final Etat monEtat;
 
   /**
    * Construit une instance en précisant l'état du passager.
    * 
    * @param e  valeur de l'état.
    */
-  public EtatPassagerChaine(String e) {
+  public EtatPassagerMonter(Etat e) {
     monEtat = e;
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
@@ -29,21 +31,12 @@ public class EtatPassagerChaine {
 
 
   /**
-   * Le passager est-il à l'extérieur du transport ?
-   *
-   * @return vrai si instanciation avec DEHORS;
-   */
-  public boolean estExterieur() {
-	  return monEtat == "DEHORS";
-  }
-
-  /**
    * Le passager est-il assis à l'intérieur du transport ?
    *
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-	  return monEtat == "ASSIS";
+	  return monEtat == Etat.ASSIS;
   }
 
   /**
@@ -52,20 +45,20 @@ public class EtatPassagerChaine {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-	  return monEtat == "DEBOUT";
+	  return monEtat == Etat.DEBOUT;
   }
-
+  
   /**
    * Le passager est-il a l'intérieur du transport ?
-   *
-   * @return vrai si instanciation avec ASSIS ou DEBOUT.
-   */
-  public boolean estInterieur() {
+  *
+  * @return vrai si instanciation avec ASSIS ou DEBOUT.
+  */
+ public boolean estInterieur() {
 	if (estAssis() || estDebout()) {
 		return true;
 	}
 	return false;
-  }
+ }
 
 
 
