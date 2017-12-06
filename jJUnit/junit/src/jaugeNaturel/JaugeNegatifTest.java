@@ -86,5 +86,28 @@ public class JaugeNegatifTest {
 		assertFalse("ma jauge n'est pas vert", jaugeBis.estVert());
 		assertTrue("ma jauge est rouge", jaugeBis.estRouge());
 	}
+	
+	@Test
+	public void testCreationNonValide ( ) {
+		JaugeNegatif inverse;
+		try {
+			inverse = new JaugeNegatif( 78 , 13 , 0 ) ;
+			assertFalse("Echec",true);
+		}catch(Exception e){
+			
+		}
+		JaugeNegatif egale;
+		try {
+			egale = new JaugeNegatif( 78 , 13 , 0 ) ;
+			assertFalse("Echec",true);
+		}catch(Exception e){
+		}
+		
+	}
+
+	@Test
+	public void testExceptionControlee ( ) {
+		//throw new ClassNotFoundException ( " Attention " );
+	}
 
 }

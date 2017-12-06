@@ -31,11 +31,17 @@ public class JaugeNegatif {
    * @param vigieMax valeur maximale de l'intervalle de vigie.
    * @param depart   valeur initiale de la jauge.
    */
-  public JaugeNegatif(long vigieMin, long vigieMax, long depart) {
-    valeur = -depart;
-    min = -vigieMin;
-    max = -vigieMax;
-    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
+  public JaugeNegatif(long vigieMin, long vigieMax, long depart) throws IllegalArgumentException {
+    if(vigieMin >= vigieMax) {
+    	throw new IllegalArgumentException();
+    }
+    else {
+    	valeur = -depart;
+        min = -vigieMin;
+        max = -vigieMax;
+    }
+	
+     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
   }
