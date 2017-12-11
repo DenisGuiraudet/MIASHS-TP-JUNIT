@@ -2,7 +2,7 @@ package tec;
 
 import util.EtatPassager;
 
-public class PassagerStandard implements Passager, Transport {
+public class PassagerStandard implements Passager, Usager {
 	
 	private EtatPassager etatPassager;
 	private String nom;
@@ -63,9 +63,9 @@ public class PassagerStandard implements Passager, Transport {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
-	public void allerArretSuivant() throws UsagerInvalideException {
+	public void monterDans(Transport t) throws UsagerInvalideException {
 		// TODO Auto-generated method stub
 		
 	}
