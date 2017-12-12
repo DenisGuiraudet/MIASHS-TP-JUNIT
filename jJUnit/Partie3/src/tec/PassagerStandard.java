@@ -18,56 +18,58 @@ public class PassagerStandard implements Passager, Usager {
 
 	@Override
 	public String nom() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nom;
 	}
 
 	@Override
 	public boolean estDehors() {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.etatPassager.estExterieur() == true) {return true;}
+		else {return false;}
 	}
 
 	@Override
 	public boolean estAssis() {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.etatPassager.estAssis() == true) {return true;}
+		else {return false;}
 	}
 
 	@Override
 	public boolean estDebout() {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.etatPassager.estDebout() == true) {return true;}
+		else {return false;}
 	}
 
 	@Override
 	public void accepterSortie() {
-		// TODO Auto-generated method stub
-		
+		if(this.etatPassager.estInterieur() == true) {
+			etatPassager = new EtatPassager(EtatPassager.Etat.DEHORS);
+		}
+		else {
+			System.out.println("Le passager est déjà dehors !");
+		}
 	}
 
 	@Override
 	public void accepterPlaceAssise() {
-		// TODO Auto-generated method stub
-		
+		etatPassager = new EtatPassager(EtatPassager.Etat.ASSIS);
 	}
 
 	@Override
 	public void accepterPlaceDebout() {
-		// TODO Auto-generated method stub
-		
+		etatPassager = new EtatPassager(EtatPassager.Etat.DEBOUT);
 	}
 
 	@Override
 	public void nouvelArret(Bus bus, int numeroArret) {
-		// TODO Auto-generated method stub
-		
+		if(this.dest == numeroArret) {
+			this.accepterSortie();
+		}
 	}
 
 	@Override
 	public void monterDans(Transport t) throws UsagerInvalideException {
-		// TODO Auto-generated method stub
 		
 	}
+
 
 }

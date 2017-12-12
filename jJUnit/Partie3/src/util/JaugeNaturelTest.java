@@ -103,12 +103,12 @@ public class JaugeNaturelTest {
 		} catch (IllegalArgumentException e) {
 		}
 	}
-	
+	/*
 	@Test
 	public void testExceptionControlee() throws ClassNotFoundException {
 		//throw new NullPointerException("Attention");
 		throw new ClassNotFoundException();
-	}
+	}*/
 	
 	
 }
