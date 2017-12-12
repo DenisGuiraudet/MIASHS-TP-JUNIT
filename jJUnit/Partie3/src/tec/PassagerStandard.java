@@ -64,11 +64,21 @@ public class PassagerStandard implements Passager, Usager {
 		if(this.dest == numeroArret) {
 			this.accepterSortie();
 		}
+		else {
+			this.accepterPlaceDebout();
+		}
 	}
 
 	@Override
 	public void monterDans(Transport t) throws UsagerInvalideException {
 		
+	}
+	
+	@Override
+	public String toString() {
+		String chaine = "";
+		chaine += "Nom : " + this.nom + "\n" + "   Destination : " + this.dest + "\n";
+		return chaine;
 	}
 
 
