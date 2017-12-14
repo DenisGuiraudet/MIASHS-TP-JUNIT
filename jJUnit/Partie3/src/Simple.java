@@ -34,10 +34,11 @@ class Simple {
 
   static public void main (String[] args) throws UsagerInvalideException {
     Transport serenity = new Autobus(1, 2);
-
     Usager kaylee = new PassagerStandard("Kaylee", 5);
 
     serenity.allerArretSuivant();
+    System.out.println("------ARRET------");
+
     // debogue
     System.out.println(serenity);
 
@@ -51,6 +52,7 @@ class Simple {
     System.out.println(serenity);
     System.out.println(kaylee);
     System.out.println(jayne);
+    System.out.println("------ARRET------");
 
     Usager inara = new PassagerStandard("Inara", 5);
     inara.monterDans(serenity);
@@ -61,6 +63,7 @@ class Simple {
     System.out.println(kaylee);
     System.out.println(jayne);
     System.out.println(inara);
+    System.out.println("------ARRET------");
 
     serenity.allerArretSuivant();
     // debogue
@@ -68,6 +71,7 @@ class Simple {
     System.out.println(kaylee);
     System.out.println(jayne);
     System.out.println(inara);
+    System.out.println("------ARRET------");
 
     serenity.allerArretSuivant();
     // debogue
@@ -75,6 +79,8 @@ class Simple {
     System.out.println(kaylee);
     System.out.println(jayne);
     System.out.println(inara);
+    System.out.println("------ARRET------");
+
   }
 }
 
