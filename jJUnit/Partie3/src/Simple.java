@@ -29,7 +29,6 @@ class Simple {
   static private void deboguerEtat (Transport t, Usager p) {
     System.out.println(p);
     System.out.println(t);
-    //Ceci est un commentaire hihi
   }
 
   static public void main (String[] args) throws UsagerInvalideException {
@@ -48,6 +47,8 @@ class Simple {
     jayne.monterDans(serenity);
 
     serenity.allerArretSuivant();
+    System.out.println("------ARRET------");
+
     // debogue
     System.out.println(serenity);
     System.out.println(kaylee);
@@ -55,6 +56,7 @@ class Simple {
     System.out.println("------ARRET------");
 
     Usager inara = new PassagerStandard("Inara", 5);
+    
     inara.monterDans(serenity);
 
     serenity.allerArretSuivant();
@@ -79,7 +81,7 @@ class Simple {
     System.out.println(kaylee);
     System.out.println(jayne);
     System.out.println(inara);
-    System.out.println("------ARRET------");
+
 
   }
 }

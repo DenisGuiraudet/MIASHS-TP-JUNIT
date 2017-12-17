@@ -58,22 +58,24 @@ public class PassagerStandard implements Passager, Usager {
 	public void nouvelArret(Bus bus, int numeroArret) {
 		if(this.dest == numeroArret) {
 			bus.demanderSortie(this);
-			this.accepterSortie();
 		}
 		else {
-			if(this.estAssis() == true) {
+			if((this.estAssis())&&(bus.aPlaceDebout()) ){
 				bus.demanderChangerEnDebout(this);
-				this.accepterPlaceAssise();
 			}
 			else {
-				bus.demanderChangerEnDebout(this);
-				this.accepterPlaceDebout();
+				if((this.estDebout() && (bus.aPlaceAssise()))) {
+					bus.demanderChangerEnAssis(this);
+				}
 			}
 		}
 	}
 
 	@Override
 	public void monterDans(Transport t) throws UsagerInvalideException {
+		if((((Autobus)t).aPlaceAssise() == false) && (((Autobus)t).aPlaceDebout() == false)){
+			throw new UsagerInvalideException ( "Plus de place  " ) ;
+		}
 		if((((Autobus)t).aPlaceAssise() == true)&&(((Autobus)t).aPlaceDebout() == true)){
 			((Autobus)t).demanderPlaceAssise(this);
 			this.accepterPlaceAssise();
@@ -82,19 +84,13 @@ public class PassagerStandard implements Passager, Usager {
 		else {
 			if(((Autobus)t).aPlaceAssise() == true) {
 				((Autobus)t).demanderPlaceAssise(this);
-				if(this.estAssis()==true) {
-					this.accepterPlaceAssise();
-					((Autobus)t).addPassenger(this);
-
-				}
-				else {
-					((Autobus)t).demanderPlaceDebout(this);
-					if(this.estDebout()==true) {
-						this.accepterPlaceDebout();
-						((Autobus)t).addPassenger(this);
-
-					}
-				}
+				this.accepterPlaceAssise();
+				((Autobus)t).addPassenger(this);
+			}
+			else {
+				((Autobus)t).demanderPlaceDebout(this);
+				this.accepterPlaceDebout();
+				((Autobus)t).addPassenger(this);
 			}
 		}
 	}
@@ -102,7 +98,7 @@ public class PassagerStandard implements Passager, Usager {
 	@Override
 	public String toString() {
 		String chaine = "";
-		chaine += "Nom : " + this.nom + "\n" + "   Destination : " + this.dest + "\n" + "State : "+ this.etatPassager.toString();
+		chaine += "Nom : " + this.nom + "\n" + "	Destination : " + this.dest + "\n" + "	State : "+ this.etatPassager.toString();
 		return chaine;
 	}
 

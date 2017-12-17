@@ -1,5 +1,6 @@
 package tec;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import util.JaugeNaturel;
 
@@ -21,6 +22,10 @@ public class Autobus implements Transport, Bus{
 	
 	public void addPassenger(PassagerStandard p) {
 		this.passager.add(p);
+	}
+	
+	public void removePassenger(Passager p) {
+		this.passager.remove(p);
 	}
 
 	@Override
@@ -53,7 +58,8 @@ public class Autobus implements Transport, Bus{
 
 	@Override
 	public void demanderChangerEnDebout(Passager p) {
-		if((this.placeAssise.estRouge() == false) && (this.placeDebout.estBleu() == false)) {
+		if(this.aPlaceDebout()) {
+			p.accepterPlaceDebout();
 			this.placeDebout.incrementer();
 			this.placeAssise.decrementer();
 		}		
@@ -61,7 +67,8 @@ public class Autobus implements Transport, Bus{
 
 	@Override
 	public void demanderChangerEnAssis(Passager p) {
-		if((this.placeAssise.estRouge() == false) && (this.placeDebout.estBleu() == false)) {
+		if(this.aPlaceAssise()) {
+			p.accepterPlaceAssise();
 			this.placeAssise.incrementer();
 			this.placeDebout.decrementer();
 		}		
@@ -69,11 +76,13 @@ public class Autobus implements Transport, Bus{
 
 	@Override
 	public void demanderSortie(Passager p) {
-		if(p.estDebout() == true) {
+		if(p.estDebout()) {
 			this.placeDebout.decrementer();
+			p.accepterSortie();
 		}
-		if(p.estAssis() == true) {
+		if(p.estAssis()) {
 			this.placeAssise.decrementer();
+			p.accepterSortie();
 		}
 	}
 
@@ -82,14 +91,27 @@ public class Autobus implements Transport, Bus{
 	public void allerArretSuivant() throws UsagerInvalideException {
 		this.arretCourant = this.arretCourant + 1;
 		for(int i=0;i<this.passager.size();i++) {
-			this.passager.get(i).nouvelArret(this, arretCourant);
+			this.passager.get(i).nouvelArret(this, this.arretCourant);
+		}
+		for(int i=0;i<this.passager.size();i++) {
+			if(this.passager.get(i).estDehors()) {
+				this.removePassenger(this.passager.get(i));
+				i = i-1;
+			}
+
 		}
 	}
 	
 	@Override
 	public String toString() {
 		String chaine = "";
-		chaine += "Arret : " + this.arretCourant + "\n Assis : " + this.placeAssise.toString() + "\n" + "Debout : " + this.placeDebout.toString()+"\n" + "   Nb_Passager : " + this.passager.size();
+		chaine += "Arret : " + this.arretCourant + 
+				  "\n	Assis : " + this.placeAssise.toString() + 
+				  "\n" + "	Debout : " + this.placeDebout.toString()+"\n" 
+				  + "	Nb_Passager : " + this.passager.size()+"\n";
+		for (int i = 0; i < this.passager.size(); i++) {
+			chaine+=" 		Passager : "+this.passager.get(i).nom()+"\n";
+		}
 		return chaine;
 	}
 
