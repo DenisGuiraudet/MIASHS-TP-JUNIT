@@ -1,0 +1,158 @@
+
+@startuml
+
+title Classes - Class Diagram
+
+left to right direction
+package "Main"{
+  class Simple {
+    main()
+  }
+}
+
+package "tec"{
+  class Autobus {
+  	-int arretCourant
+  	+Autobus(int assis, int debout)
+  	+void addPassenger(Passager p)
+  	+void removePassenger(Passager p)
+  	+int getArret()
+  	+boolean aPlaceAssise()
+  	+boolean aPlaceDebout()
+  	+void demanderPlaceAssise(Passager p)
+  	+void demanderPlaceDebout(Passager p)
+  	+void demanderChangerEnDebout(Passager p)
+  	+void demanderChangerEnAssis(Passager p)
+  	+void demanderSortie(Passager p)
+  	+void allerArretSuivant()
+  	+String toString()
+  }
+
+  abstract class PassagerAbstrait [[java:tec.PassagerAbstrait]] {
+  	-String nom
+  	-int dest
+  	+PassagerAbstrait(String nom, int dest)
+  	+String nom()
+  	+int getDest()
+  	+void setDest(int desti)
+  	+void setEtat(EtatPassager etat)
+  	+{abstract}void choixPlaceMontee(Bus b)
+  	+{abstract}void choixChangerPlace(Bus b, int arret)
+  	+boolean estDehors()
+  	+boolean estAssis()
+  	+boolean estDebout()
+  	+void accepterSortie()
+  	+void accepterPlaceAssise()
+  	+void accepterPlaceDebout()
+  	+{abstract}void nouvelArret(Bus bus, int numeroArret)
+  	+{abstract}void monterDans(Transport t)
+  	+String toString()
+  }
+
+  class PassagerStandard {
+    +PassagerStandard(String nom, int dest)
+    +void nouvelArret(Bus bus, int numeroArret)
+    +void monterDans(Transport t)
+    +void choixPlaceMontee(Bus b)
+    +void choixChangerPlace(Bus b, int arret)
+  }
+
+  class PassagerLunatique [[java:tec.PassagerLunatique]] {
+    +PassagerLunatique(String nom, int dest)
+    +void nouvelArret(Bus bus, int numeroArret)
+    +void monterDans(Transport t)
+    +void choixPlaceMontee(Bus b)
+    +void choixChangerPlace(Bus b, int arret)
+  }
+
+  class PassagerStresse [[java:tec.PassagerStresse]] {
+    +PassagerStresse(String nom, int dest)
+    +void nouvelArret(Bus bus, int numeroArret)
+    +void monterDans(Transport t)
+    +void choixPlaceMontee(Bus b)
+    +void choixChangerPlace(Bus b, int arret)
+  }
+
+  class UsagerInvalidException {
+  +Usager quelUsager
+  +Transport quelTransport
+  ~UsagerInvalideException(String message)
+  ~UsagerInvalideException(String message, Usager u, Transport t)
+  }
+
+  Interface Transport {
+    +allerArretSuivant()
+  }
+
+  Interface Usager {
+    +nom()
+    +monterDans(Transport t)
+  }
+
+  Interface Bus {
+    boolean aPlaceAssise()
+    boolean aPlaceDebout()
+    int getArret()
+    void addPassenger(Passager p)
+    void removePassenger(Passager p)
+    void demanderPlaceAssise(Passager p)
+    void demanderPlaceDebout(Passager p)
+    void demanderChangerEnDebout(Passager p)
+    void demanderChangerEnAssis(Passager p)
+    void demanderSortie(Passager p)
+  }
+
+  Interface Passager {
+    String nom()
+    boolean estDehors()
+    boolean estAssis()
+    boolean estDebout()
+    void accepterSortie()
+    void accepterPlaceAssise()
+    void accepterPlaceDebout()
+    void nouvelArret(Bus bus, int numeroArret)
+  }
+
+}
+
+package "util" {
+  class EtatPassager {
+    -Etat monEtat
+    +EtatPassager(Etat e)
+    +boolean estExterieur()
+    +boolean estAssis()
+    +boolean estDebout()
+    +boolean estInterieur()
+    +String toString()
+  }
+
+  class JaugeNaturel {
+    -long valeur
+    -long min
+    -long max
+    +JaugeNaturel(long vigieMin, long vigieMax, long depart)
+    +boolean estRouge()
+    +boolean estVert()
+    +boolean estBleu()
+    +void incrementer()
+    +void decrementer()
+    +String toString()
+  }
+}
+
+Autobus *-- JaugeNaturel : placeAssise
+Autobus *-- JaugeNaturel : placeDebout
+Transport <|.. Autobus
+Bus <|.. Autobus
+UsagerInvalidException <.. Usager : "<<throws>>"
+Autobus --> "0..*" Passager : passager
+
+Passager <|.. PassagerAbstrait
+Usager <|.. PassagerAbstrait
+PassagerAbstrait <|-- PassagerStandard
+PassagerAbstrait <|-- PassagerLunatique
+PassagerAbstrait <|-- PassagerStresse
+
+PassagerAbstrait *-- EtatPassager : etatPassager
+
+@enduml

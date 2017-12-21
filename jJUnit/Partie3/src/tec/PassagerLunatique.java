@@ -1,16 +1,10 @@
 package tec;
 
-import util.EtatPassager;
-
-public class PassagerLunatique extends PassagerAbstrait implements Passager, Usager  {
-	
-	private EtatPassager etatPassager;
-
+public class PassagerLunatique extends PassagerAbstrait {
 
 	public PassagerLunatique(String nom, int dest) {
 
 		super(nom, dest);
-		super.setEtat(new EtatPassager(EtatPassager.Etat.DEHORS));
 		
 	}
 	
@@ -32,13 +26,6 @@ public class PassagerLunatique extends PassagerAbstrait implements Passager, Usa
 		else {
 			this.choixPlaceMontee(((Bus)t));
 		}
-	}
-	
-	@Override
-	public String toString() {
-		String chaine = "";
-		chaine += "Nom : " + this.nom() + "\n" + "	Destination : " + this.getDest() + "\n" + "	State : "+ this.etatPassager.toString();
-		return chaine;
 	}
 
 	@Override
