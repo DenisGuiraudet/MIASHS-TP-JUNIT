@@ -41,6 +41,7 @@ public abstract class PassagerAbstractTest {
 		} catch (UsagerInvalideException e) {
 			System.out.println("Trop de passager !");
 		}
+		//BLBL
 	}
 	
 	@Test
