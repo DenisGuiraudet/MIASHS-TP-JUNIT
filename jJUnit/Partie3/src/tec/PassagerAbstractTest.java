@@ -5,10 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import util.EtatPassager;
+public abstract class PassagerAbstractTest {
 
-public class PassagerStandardTest extends PassagerAbstractTest {
-	
 	@Test
 	public void accepterSortirTest() {
 		PassagerStandard temp = new PassagerStandard("test", 2);
@@ -63,11 +61,5 @@ public class PassagerStandardTest extends PassagerAbstractTest {
 		assertTrue("Le passage 2 n'est pas debout !",temp2.estDebout());
 		assertTrue("Le passager 3 n'est pas dehors !",temp3.estDehors());
 	}
-	
-	
-	
-	
-	
-	
 	
 }

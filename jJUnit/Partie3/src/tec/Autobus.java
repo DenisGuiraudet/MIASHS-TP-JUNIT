@@ -10,7 +10,7 @@ public class Autobus implements Transport, Bus{
 	private JaugeNaturel placeAssise;
 	private JaugeNaturel placeDebout;
 	private int arretCourant;
-	private ArrayList<PassagerStandard> passager;
+	private ArrayList<Passager> passager;
 	
 	public Autobus(int assis, int debout) throws IllegalArgumentException{
 		if ((assis == 0)||(debout==0)) throw new IllegalArgumentException();
@@ -20,14 +20,16 @@ public class Autobus implements Transport, Bus{
 		this.passager = new ArrayList<>();
 	}
 	
-	public void addPassenger(PassagerStandard p) {
+	public void addPassenger(Passager p) {
 		this.passager.add(p);
 	}
 	
 	public void removePassenger(Passager p) {
 		this.passager.remove(p);
 	}
-
+	public int getArret() {
+		return this.arretCourant;
+	}
 	@Override
 	public boolean aPlaceAssise() {
 		if((this.placeAssise.estVert() == true)||(this.placeAssise.estBleu() == true)) {return true;}

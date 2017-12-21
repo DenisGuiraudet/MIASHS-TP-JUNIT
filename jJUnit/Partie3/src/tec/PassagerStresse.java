@@ -2,12 +2,12 @@ package tec;
 
 import util.EtatPassager;
 
-public class PassagerStandard extends PassagerAbstrait implements Passager, Usager  {
+public class PassagerStresse extends PassagerAbstrait implements Passager, Usager  {
 	
 	private EtatPassager etatPassager;
 
 
-	public PassagerStandard(String nom, int dest) {
+	public PassagerStresse(String nom, int dest) {
 
 		super(nom, dest);
 		super.setEtat(new EtatPassager(EtatPassager.Etat.DEHORS));
@@ -20,7 +20,9 @@ public class PassagerStandard extends PassagerAbstrait implements Passager, Usag
 			bus.demanderSortie(this);
 		}
 		else {
-			choixChangerPlace(bus, numeroArret);
+			if(this.estDehors()==false) {
+				choixChangerPlace(bus, bus.getArret());
+			}
 		}
 	}
 
@@ -29,10 +31,9 @@ public class PassagerStandard extends PassagerAbstrait implements Passager, Usag
 		if((((Autobus)t).aPlaceAssise() == false) && (((Autobus)t).aPlaceDebout() == false)){
 			throw new UsagerInvalideException ( "Plus de place  " ) ;
 		}
-		else {
-			choixPlaceMontee((Bus)t);
+		else{
+			this.choixPlaceMontee(((Bus)t));
 		}
-		
 	}
 	
 	@Override
@@ -44,35 +45,16 @@ public class PassagerStandard extends PassagerAbstrait implements Passager, Usag
 
 	@Override
 	public void choixPlaceMontee(Bus b) {
-		if((b.aPlaceAssise() == true)&&(b.aPlaceDebout() == true)){
+		if(b.aPlaceAssise()) {
 			b.demanderPlaceAssise(this);
-			this.accepterPlaceAssise();
-			b.addPassenger(this);
-		}
-		else {
-			if(b.aPlaceAssise() == true) {
-				b.demanderPlaceAssise(this);
-				this.accepterPlaceAssise();
-				b.addPassenger(this);
-			}
-			else {
-				b.demanderPlaceDebout(this);
-				this.accepterPlaceDebout();
-				b.addPassenger(this);
-			}
 		}
 	}
 
 	@Override
 	public void choixChangerPlace(Bus b, int arret) {
-		if((this.estAssis())&&(b.aPlaceDebout()) ){
+		if((b.getArret() - this.getDest() <= 3)&&(b.aPlaceDebout())&&(this.estAssis())) {
 			b.demanderChangerEnDebout(this);
 		}
-		else {
-			if((this.estDebout() && (b.aPlaceAssise()))) {
-				b.demanderChangerEnAssis(this);
-			}
-		}		
 	}
 
 

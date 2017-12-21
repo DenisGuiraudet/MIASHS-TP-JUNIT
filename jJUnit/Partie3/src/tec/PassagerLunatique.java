@@ -2,12 +2,12 @@ package tec;
 
 import util.EtatPassager;
 
-public class PassagerStandard extends PassagerAbstrait implements Passager, Usager  {
+public class PassagerLunatique extends PassagerAbstrait implements Passager, Usager  {
 	
 	private EtatPassager etatPassager;
 
 
-	public PassagerStandard(String nom, int dest) {
+	public PassagerLunatique(String nom, int dest) {
 
 		super(nom, dest);
 		super.setEtat(new EtatPassager(EtatPassager.Etat.DEHORS));
@@ -30,9 +30,8 @@ public class PassagerStandard extends PassagerAbstrait implements Passager, Usag
 			throw new UsagerInvalideException ( "Plus de place  " ) ;
 		}
 		else {
-			choixPlaceMontee((Bus)t);
+			this.choixPlaceMontee(((Bus)t));
 		}
-		
 	}
 	
 	@Override
@@ -44,22 +43,8 @@ public class PassagerStandard extends PassagerAbstrait implements Passager, Usag
 
 	@Override
 	public void choixPlaceMontee(Bus b) {
-		if((b.aPlaceAssise() == true)&&(b.aPlaceDebout() == true)){
-			b.demanderPlaceAssise(this);
-			this.accepterPlaceAssise();
-			b.addPassenger(this);
-		}
-		else {
-			if(b.aPlaceAssise() == true) {
-				b.demanderPlaceAssise(this);
-				this.accepterPlaceAssise();
-				b.addPassenger(this);
-			}
-			else {
-				b.demanderPlaceDebout(this);
-				this.accepterPlaceDebout();
-				b.addPassenger(this);
-			}
+		if(b.aPlaceDebout()) {
+			b.demanderPlaceDebout(this);
 		}
 	}
 

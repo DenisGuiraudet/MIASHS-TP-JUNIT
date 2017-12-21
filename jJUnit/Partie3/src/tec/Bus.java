@@ -30,6 +30,14 @@ interface Bus {
    * @return vrai s'il existe des places debouts
    */
   public boolean aPlaceDebout();
+  
+  
+	public int getArret();
+	
+	public void addPassenger(Passager p);
+
+	
+	public void removePassenger(Passager p);
 
   /**
    * Le passager entre dans ce bus en demandant une place assise.

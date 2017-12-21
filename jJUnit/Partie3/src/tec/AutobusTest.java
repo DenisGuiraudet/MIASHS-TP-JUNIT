@@ -21,10 +21,14 @@ public class AutobusTest {
 		assertTrue("Autobus n'a pas de place debout", temp.aPlaceDebout());
 	}
 	
+
+
+	
 	@Test
 	public void demanderPlaceAssiseTest() {
 		Autobus temp = new Autobus(1, 1);
 		PassagerStandard tempP = new PassagerStandard("Billy", 2);
+		assertTrue("Il doit y avoir des places assise ! ",temp.aPlaceAssise());
 		temp.demanderPlaceAssise(tempP);
 		assertTrue("Le passager n'est pas assis !",tempP.estAssis());
 		assertFalse("Il ne doit pas y avoir de place assise !",temp.aPlaceAssise());	
