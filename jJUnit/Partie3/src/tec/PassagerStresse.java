@@ -34,12 +34,13 @@ public class PassagerStresse extends PassagerAbstrait {
 	public void choixPlaceMontee(Bus b) {
 		if(b.aPlaceAssise()) {
 			b.demanderPlaceAssise(this);
+			b.addPassenger(this);
 		}
 	}
 
 	@Override
 	public void choixChangerPlace(Bus b, int arret) {
-		if((b.getArret() - this.getDest() <= 3)&&(b.aPlaceDebout())&&(this.estAssis())) {
+		if((this.getDest() - b.getArret() == 3)&&(b.aPlaceDebout())&&(this.estAssis())) {
 			b.demanderChangerEnDebout(this);
 		}
 	}

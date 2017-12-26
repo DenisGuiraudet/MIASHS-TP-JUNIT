@@ -33,13 +33,11 @@ public class PassagerStandard extends PassagerAbstrait {
 	public void choixPlaceMontee(Bus b) {
 		if((b.aPlaceAssise() == true)&&(b.aPlaceDebout() == true)){
 			b.demanderPlaceAssise(this);
-			this.accepterPlaceAssise();
 			b.addPassenger(this);
 		}
 		else {
 			if(b.aPlaceAssise() == true) {
 				b.demanderPlaceAssise(this);
-				this.accepterPlaceAssise();
 				b.addPassenger(this);
 			}
 			else {
