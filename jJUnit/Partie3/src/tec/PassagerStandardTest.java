@@ -7,28 +7,9 @@ import org.junit.Test;
 
 public class PassagerStandardTest extends PassagerAbstractTest {
 	
-	@Test
-	public void accepterSortirTest() {
-		PassagerStandard temp = new PassagerStandard("test", 2);
-		temp.accepterSortie();
-		assertTrue("Etat non exterieur", temp.estDehors());
-	}
-	@Test
-	public void accepterAssisTest() {
-		PassagerStandard temp = new PassagerStandard("test", 2);
-		temp.accepterPlaceAssise();;
-		assertTrue("Etat non assis", temp.estAssis());
-	}
-	@Test
-	public void accepterDeboutTest() {
-		PassagerStandard temp = new PassagerStandard("test", 2);
-		temp.accepterPlaceDebout();
-		assertTrue("Etat non debout", temp.estDebout());
-	}
-	
-	@Test
+	@Override
 	public void nouvelArretTest() {
-		PassagerStandard temp = new PassagerStandard("test", 2);
+		PassagerAbstrait temp = creerPassager("test", 2);
 		Autobus t = new Autobus(1, 1);
 		try {
 			temp.monterDans(t);
@@ -43,11 +24,11 @@ public class PassagerStandardTest extends PassagerAbstractTest {
 		}
 	}
 	
-	@Test
+	@Override
 	public void monterDansTest() {
-		PassagerStandard temp = new PassagerStandard("test", 2);
-		PassagerStandard temp2 = new PassagerStandard("test", 2);
-		PassagerStandard temp3 = new PassagerStandard("test", 2);
+		PassagerAbstrait temp = creerPassager("test", 2);
+		PassagerAbstrait temp2 = creerPassager("test", 2);
+		PassagerAbstrait temp3 = creerPassager("test", 2);
 
 		Autobus t = new Autobus(1, 1);
 		try {
@@ -61,11 +42,12 @@ public class PassagerStandardTest extends PassagerAbstractTest {
 		assertTrue("Le passage 2 n'est pas debout !",temp2.estDebout());
 		assertTrue("Le passager 3 n'est pas dehors !",temp3.estDehors());
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	protected PassagerAbstrait creerPassager(String nom, int destination) {
+		PassagerStandard pass = new PassagerStandard(nom,destination);
+		return pass;
+	}
 	
 	
 }
