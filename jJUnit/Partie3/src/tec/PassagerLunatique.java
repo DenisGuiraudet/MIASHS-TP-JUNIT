@@ -32,6 +32,7 @@ public class PassagerLunatique extends PassagerAbstrait {
 	public void choixPlaceMontee(Bus b) {
 		if(b.aPlaceDebout()) {
 			b.demanderPlaceDebout(this);
+			b.addPassenger(this);
 		}
 	}
 
